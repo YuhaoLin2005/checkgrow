@@ -1,0 +1,50 @@
+# Acknowledgments
+
+CheckGrow exists because others shared their work first.
+
+## Built Upon
+
+**T-CBB (SwarmAI) — xg-gh-25**
+The T-CBB autonomous pipeline framework independently converged on the same four-dimension quality gate pattern. OP8 (Config Consistency) directly validates our format consistency finding as a system-level operational invariant. The mechanical+reasoning hybrid gate architecture, binary push-ready design, and profile-based task classification all influenced CheckGrow's architecture.
+
+- Autonomous Pipeline Design: [SwarmAI docs](https://github.com/xg-gh-25/SwarmAI/blob/main/docs/Autonomous-Pipeline-Design.md)
+- PR review that pushed self-audit from v1.0 to v2.0: [anthropics/skills#1367](https://github.com/anthropics/skills/pull/1367)
+
+Thank you for the review that found the exact structural weakness in two sentences.
+
+**Hermes Agent — Nous Research**
+Hermes' skill format (YAML frontmatter, HARDLINE rules, conditional activation) shaped CheckGrow's skill standardization. The SKILL.md conventions used across CheckGrow skills are adapted from Hermes' open standard.
+
+- [Hermes Agent](https://github.com/NousResearch/hermes-agent)
+- [AgentSkills.io](https://agentskills.io)
+
+**CodeRabbit & Greptile**
+Automated review bots that caught 9 bugs in delivery-gate across 4 review rounds.
+
+## Validated By
+
+**ECC — affaan-m / daltino**
+ECC provided the first community validation of delivery-gate. daltino's approval on PR #2365 confirmed the concept was worth pursuing.
+
+- [ECC #2365](https://github.com/affaan-m/ECC/pull/2365) (approved)
+- [ECC #2378](https://github.com/affaan-m/ECC/pull/2378) (active)
+
+**anthropics/skills — Anthropic**
+Provided the platform for self-audit's first public review and SwarmAI's subsequent technical review.
+
+- [self-audit PR #1367](https://github.com/anthropics/skills/pull/1367)
+
+**claude-skills — alirezarezvani**
+Provided the first real-world validation platform for dual-pool named-persona adversarial review.
+
+- [named-persona PR #866](https://github.com/alirezarezvani/claude-skills/pull/866)
+
+**agent-best-practices — NextFrontierBuilds**
+Accepted the format consistency anti-pattern as a community contribution.
+
+- [PR #1](https://github.com/NextFrontierBuilds/agent-best-practices/pull/1)
+
+## Tools
+
+- **Python** — stdlib-only design philosophy
+- **Claude Code** — the agent harness that runs CheckGrow's hooks

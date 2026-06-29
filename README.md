@@ -2,6 +2,8 @@
 
 **Check your AI. Grow yourself.**
 
+> AI output quality toolkit: adversarial review + delivery gate + format consistency + metabolic cost tracking. For Claude Code, Cursor, Hermes, and any AI agent user.
+
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 ---
@@ -22,7 +24,7 @@ That's the problem CheckGrow solves: **your AI produces output, but who checks i
 | You learn nothing from the interaction | Every session grows your personal knowledge base |
 | Same mistakes repeat across sessions | Delivery gate enforces learning capture |
 | Config files drift into format chaos | Format check catches drift before it degrades AI behavior |
-| No idea how much your sessions cost | Metabolic tracking shows per-session cost + layered decisions |
+| No idea how much sessions cost | Metabolic tracking shows per-session cost + layered decisions |
 
 ---
 
@@ -30,29 +32,31 @@ That's the problem CheckGrow solves: **your AI produces output, but who checks i
 
 ```
 checkgrow/
-├── delivery-gate/         Stop hook — blocks session end until quality checks pass
 ├── adversarial-review/    Skill — spawn adversarial subagents (with Litmus Pre-Gate)
 ├── self-audit/            Skill — mechanical Step 0 + four-dimension reasoning audit
-├── dual-pool-review/      Methodology — multi-persona cross-review
-├── format-consistency/    Checker + docs — detect config format drift (OP8-validated)
+├── format-consistency/    Docs — detect config format drift (independently validated by T-CBB OP8)
 ├── docs/
 │   ├── failure-patterns.md          10 patterns catalogued from real sessions
 │   ├── five-step-decision-flow.md   Self-review → panel → confirm → implement → check
 │   ├── hybrid-gate-architecture.md  Mechanical + reasoning gate design
-│   └── quickstart.md
+│   └── t-cbb-convergence.md        Architecture convergence with SwarmAI's T-CBB
 └── examples/
     └── broken-output.txt           Demo: deliberately broken AI output
+
+Also available as standalone tools:
+├── delivery-gate → github.com/YuhaoLin2005/delivery-gate
+├── dual-pool-review → github.com/YuhaoLin2005/dual-pool-review
+└── self-audit pip package → github.com/YuhaoLin2005/self-audit
 ```
 
 ---
 
-## Proven in production
+## Proven
 
 | Case | What happened |
 |---|---|
 | **delivery-gate** | 200-line script, 4 rounds review → 9 bugs, 8 invisible to self-review |
 | **Remote sensing** | ENVI scripts → adversarial review caught 3 critical bugs |
-| **This repo's consolidation** | 39 issues found by applying the 5-step flow to the plan itself |
 | **Format consistency** | 4 config files, 6+ styles → 28% reduction, behavior improvement |
 
 ---
@@ -61,17 +65,15 @@ checkgrow/
 
 CheckGrow's architecture independently converged with two production systems:
 
-**T-CBB (SwarmAI):** T-CBB's autonomous pipeline framework lists "Config Consistency" (OP8) as one of eight operational invariants — independently confirming that format uniformity across AI config files is a system-level requirement. The four-dimension quality gate (Completeness/Consistency/Groundedness/Honesty) converged with T-CBB's Output/Requirement/Contradiction/Evidence taxonomy. T-CBB operates at pipeline boundaries; CheckGrow applies the same principle at the session level.
+**T-CBB (SwarmAI):** T-CBB's autonomous pipeline framework lists "Config Consistency" (OP8) as one of eight operational invariants. The four-dimension quality gate taxonomy converged across both systems. T-CBB operates at pipeline boundaries; CheckGrow applies the same principle at the session level. [See acknowledgments.](ACKNOWLEDGMENTS.md)
 
-**Hermes Agent:** Hermes gives AI agents persistent memory and auto-created skills. CheckGrow adds the quality assurance layer — adversarial review, mechanical verification, enforced learning capture, and metabolic cost tracking — that sits alongside Hermes' skill execution.
+**Hermes Agent:** Hermes gives AI agents persistent memory and auto-created skills. CheckGrow adds the quality assurance layer — adversarial review, mechanical verification, enforced learning capture, and metabolic cost tracking.
 
 ---
 
 ## Acknowledgments
 
-CheckGrow exists because others shared their work first. See [ATTRIBUTIONS.md](ATTRIBUTIONS.md) for the full list.
-
-Special thanks to **xg-gh-25 (SwarmAI)** for the T-CBB review that pushed self-audit from v1.0 to v2.0 — finding the exact structural weakness in two sentences.
+See [ACKNOWLEDGMENTS.md](ACKNOWLEDGMENTS.md). Special thanks to **xg-gh-25 (SwarmAI)** for the T-CBB review that found the exact structural weakness in self-audit v1.0 in two sentences.
 
 ---
 
