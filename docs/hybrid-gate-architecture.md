@@ -22,7 +22,7 @@ Pure mechanical checks (delivery-gate) have a different blind spot: **they can't
 
 ### The Mechanical Layer is Itself Dual-Layer
 
-As of [delivery-gate](https://github.com/YuhaoLin2005/delivery-gate) v2.0, the mechanical gate splits into two sub-layers:
+As of [delivery-gate](https://github.com/gategrow/delivery-gate) v2.0, the mechanical gate splits into two sub-layers:
 
 | Sub-layer | Component | Principle | Blocks? |
 |-----------|-----------|-----------|---------|
