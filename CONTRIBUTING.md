@@ -7,8 +7,8 @@ CheckGrow is a methodology project — every contribution is a piece of insight 
 ### 1. Content (the core of CheckGrow)
 
 | What | Where | Example |
-|------|-------|---------|
-| Failure pattern | `docs/failure-patterns/` | A new way agents degrade that you've observed |
+|------|-------|--------|
+| Failure pattern | `docs/failure-patterns.md` | A new way agents degrade that you've observed |
 | Skill | `skills/` directory | A review/audit/check skill that catches failures |
 | Real-world example | `docs/examples/` | A concrete case where a failure pattern was caught |
 | Backend mapping | `semantic-map.json` | Verb mappings for a new AI backend |
