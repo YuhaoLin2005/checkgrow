@@ -20,6 +20,17 @@ Pure mechanical checks (delivery-gate) have a different blind spot: **they can't
 
 **Hybrid = mechanical catches lies of omission, reasoning catches errors of thinking.**
 
+### The Mechanical Layer is Itself Dual-Layer
+
+As of [delivery-gate](https://github.com/YuhaoLin2005/delivery-gate) v2.0, the mechanical gate splits into two sub-layers:
+
+| Sub-layer | Component | Principle | Blocks? |
+|-----------|-----------|-----------|---------|
+| **Process (soft)** | config-health.py | Monitors rule execution via `[✓MARKER]` counting | Never (exit 0 always) |
+| **Output (hard)** | quality-gate.py | Enforces five-library updates via mtime | ≥3 stale → block |
+
+The boundary isn't "importance" — it's **"can this be fixed later?"** Missed rule execution can be retroactively marked and counted. Missed output records are lost forever.
+
 ## The T-CBB Connection
 
 SwarmAI's T-CBB (Coding as Black Box) deploys the same pattern at pipeline handoff boundaries:
@@ -51,8 +62,9 @@ Agent claims task complete
   └─ Spawn subagent(s) for code/docs
         │
         ▼
-[Mechanical: delivery-gate]
-  └─ Learning captured? Disk OK? ── NO → BLOCK
+[Mechanical: delivery-gate (dual-layer)]
+  ├─ config-health.py: rule markers? ── monitor, never blocks
+  └─ quality-gate.py: 5-lib mtime? Disk? ── NO → BLOCK
         │ YES
         ▼
      DELIVER
